@@ -1,6 +1,6 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`7.9.0` (*Dockerfile*)](https://github.com/syphr42/logitechmediaserver/blob/master/Dockerfile)
+-	[`7.9.0` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile)
 
 # What is Logitech Media Server?
 TODO
