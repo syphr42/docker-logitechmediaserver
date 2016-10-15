@@ -1,0 +1,22 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+before_install:
+  - docker build -t syphr/lms:7.9.0 -f Dockerfile .
+  - docker run -d -p 127.0.0.1:9000:9000 -p 127.0.0.1:9090:9090 syphr/lms:7.9.0
+  - docker ps
+
+script:
+#  - export TEST_HOST=127.0.0.1 && ./test.sh
+  - echo "No test"
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push syphr/lms:7.9.0;
+    fi
+
