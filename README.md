@@ -13,8 +13,8 @@ When creating a container from this image, you should mount '/var/lib/squeezebox
 ```
 docker run \
         --name logitechmediaserver \
-	-p 9000:9000 \
-	-p 9090:9090 \
+        -p 9000:9000 \
+        -p 9090:9090 \
         -v /opt/lms:/var/lib/squeezeboxserver \
         -d \
         --restart=always \
