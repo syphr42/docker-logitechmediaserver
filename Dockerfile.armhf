@@ -5,8 +5,10 @@
 # executions.
 
 # The service ports are as follows:
-#	HTTP: 9000
-#	 CLI: 9090
+#       HTTP: 9000/tcp
+#        CLI: 9090/tcp
+#    Control: 3483/tcp
+#  Discovery: 3483/udp
 
 FROM armv7/armhf-debian
 
@@ -53,5 +55,5 @@ RUN set -x \
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 
-EXPOSE 9000 9090
+EXPOSE 9000/tcp 9090/tcp 3483/tcp 3483/udp
 CMD ["squeezeboxserver"]

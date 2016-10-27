@@ -14,8 +14,10 @@ When creating a container from this image, you should mount '/var/lib/squeezebox
 ```
 docker run \
         --name logitechmediaserver \
-        -p 9000:9000 \
-        -p 9090:9090 \
+        -p 9000:9000/tcp \
+        -p 9090:9090/tcp \
+        -p 3483:3483/tcp \
+        -p 3483:3483/udp \
         -v /data/lms:/var/lib/squeezeboxserver \
         -v /data/media:/data/media \
         -v /etc/localtime:/etc/localtime:ro \
@@ -27,6 +29,6 @@ docker run \
 
 After starting the container based on this image, access the web app: http://localhost:9000
 
-The command line interface is available on port 9090.
+The command line interface is available on port 9090. TCP and UDP ports 3483 are used for streaming and discovery.
 
 The Docker image can be found here: https://hub.docker.com/r/syphr/logitechmediaserver
