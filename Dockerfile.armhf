@@ -4,7 +4,7 @@
 # /var/lib/squeezeboxserver to a volume to preserve configuration between
 # executions.
 
-# The default ports are as follows:
+# The service ports are as follows:
 #	HTTP: 9000
 #	 CLI: 9090
 
@@ -26,10 +26,32 @@ COPY ./install-lms.sh .
 # download and install lms package
 RUN ./install-lms.sh
 
+# set username in the environment
+ENV LMS_USER squeezeboxserver
+
 # fix permissions
-RUN chown -R squeezeboxserver:nogroup /usr/share/squeezeboxserver/
+RUN chown -R ${LMS_USER}:nogroup /usr/share/squeezeboxserver/
 
-# switch to pre-configured user
-USER squeezeboxserver
+# set current directory to data dir
+WORKDIR /var/lib/squeezeboxserver
 
-CMD ["/usr/sbin/squeezeboxserver"]
+# grab gosu for easy step-down from root
+ENV GOSU_VERSION 1.7
+RUN set -x \
+	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/* \
+	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
+	&& wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
+	&& export GNUPGHOME="$(mktemp -d)" \
+	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	&& gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
+	&& rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
+	&& chmod +x /usr/local/bin/gosu \
+	&& gosu nobody true \
+	&& apt-get purge -y --auto-remove ca-certificates
+
+# install entrypoint script
+COPY ./entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+
+EXPOSE 9000 9090
+CMD ["squeezeboxserver"]
