@@ -2,8 +2,8 @@
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.9.0`, `latest` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile)
--       [`7.9.0-armhf`, `latest-armhf` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile.armhf)
+- [`7.9.0`, `latest` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile)
+- [`7.9.0-armhf`, `latest-armhf` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile.armhf)
 
 # What is Logitech Media Server?
 Logitech Media Server is a software system for controlling physical and virtual music players (e.g. Squeezebox). For more information, click here: https://en.wikipedia.org/wiki/Logitech_Media_Server
