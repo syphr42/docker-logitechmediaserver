@@ -35,6 +35,8 @@ The Docker image can be found here: https://hub.docker.com/r/syphr/logitechmedia
 
 If you are using NFS to mount a directory where you will be mapping ```/var/lib/squeezeboxserver``` and the NFS export is using ```all_squash``` or ```root_squash```, you will need to override either the command or the entrypoint defined for this image. The reason is that the entrypoint script, when using the default command, will attempt to perform ```chown``` on ```/var/lib/squeezeboxserver``` with the default non-root user (squeezeboxserver) and then drop to that user. Changing ownership of a directory is not permitted via NFS with the squash options enabled and so the container will fail to start with the default configuration.
 
+With this NFS setup, you will also need to specify the mount point as "nocopy". Without this, Docker attempts to copy the contents of the folder in the container to the mount point and then copy the permissions. This fails for the same reason as above.
+
 ```
 docker run \
         --name logitechmediaserver \
@@ -42,7 +44,7 @@ docker run \
         --publish 9090:9090/tcp \
         --publish 3483:3483/tcp \
         --publish 3483:3483/udp \
-        --volume /data/lms:/var/lib/squeezeboxserver \
+        --volume /data/lms:/var/lib/squeezeboxserver:nocopy \
         --volume /data/media:/data/media \
         --detach \
         --restart always \ 
