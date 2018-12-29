@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
 		libfaad2 \
 		libmad0 \
 		perl \
+		libio-socket-ssl-perl \
 		wget \
 	--no-install-recommends && rm -r /var/lib/apt/lists/*
 

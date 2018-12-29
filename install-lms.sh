@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url="http://www.mysqueezebox.com/update/?version=7.9.0&revision=1&geturl=1&os=deb"
+url="http://www.mysqueezebox.com/update/?version=7.9.1&revision=1&geturl=1&os=deb"
 latest_lms=$(wget -q -O - "$url")
 cd /tmp
 wget $latest_lms
