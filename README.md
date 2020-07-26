@@ -1,4 +1,4 @@
-![Build](https://github.com/syphr42/docker-logitechmediaserver/workflows/image/badge.svg?branch=master&event=push)
+![Build](https://github.com/syphr42/docker-logitechmediaserver/workflows/build-images/badge.svg)
 
 # Supported tags and respective `Dockerfile` links
 
