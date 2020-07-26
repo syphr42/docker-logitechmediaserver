@@ -50,7 +50,6 @@ jobs:
             docker buildx build \
               --build-arg LMS_VERSION="${version}" \
               --tag syphr/logitechmediaserver:"${version}-beta" \
-              --tag syphr/logitechmediaserver:latest \
               --platform linux/amd64,linux/arm/v7 \
               --push \
               .
