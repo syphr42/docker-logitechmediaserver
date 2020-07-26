@@ -27,5 +27,5 @@ jobs:
             --tag syphr/logitechmediaserver:7.9.2 \
             --tag syphr/logitechmediaserver:latest \
             --platform linux/amd64,linux/arm/v7 \
-            --push
+            --push \
             .
