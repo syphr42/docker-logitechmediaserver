@@ -17,12 +17,16 @@ FROM ${ARCH}debian:buster-slim
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
 		ca-certificates \
-		libsox-fmt-all \
-		libflac-dev \
+		curl \
 		libfaad2 \
-		libmad0 \
-		perl \
+		libflac-dev \
 		libio-socket-ssl-perl \
+		libmad0 \
+		libnet-libidn-perl \
+		libnet-ssleay-perl \
+		libsox-fmt-all \
+		perl \
+		perl-openssl-defaults \
 		wget \
  && rm -r /var/lib/apt/lists/*
 
