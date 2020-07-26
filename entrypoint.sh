@@ -1,10 +1,10 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -eo pipefail
+shopt -s failglob
 
-if [ "$1" = 'squeezeboxserver' ]; then
-    chown -R $LMS_USER .
-
-    exec gosu $LMS_USER "$@"
+if [ "${1}" = 'squeezeboxserver' ]; then
+    chown -R ${LMS_USER}:${LMS_GROUP} .
+    exec gosu ${LMS_USER} "$@"
 fi
 
 exec "$@"

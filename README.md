@@ -1,9 +1,8 @@
-[![Build state](https://travis-ci.org/syphr42/docker-logitechmediaserver.svg?branch=master)](https://travis-ci.org/syphr42/docker-logitechmediaserver)
+![Build](https://github.com/syphr42/docker-logitechmediaserver/workflows/image/badge.svg?branch=master&event=push)
 
 # Supported tags and respective `Dockerfile` links
 
-- [`7.9.0`, `latest` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile)
-- [`7.9.0-armhf`, `latest-armhf` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile.armhf)
+- [`7.9.2`, `latest` (*Dockerfile*)](https://github.com/syphr42/docker-logitechmediaserver/blob/master/Dockerfile)
 
 # What is Logitech Media Server?
 Logitech Media Server is a software system for controlling physical and virtual music players (e.g. Squeezebox). For more information, click here: https://en.wikipedia.org/wiki/Logitech_Media_Server
@@ -21,7 +20,7 @@ docker run \
         --volume /data/lms:/var/lib/squeezeboxserver \
         --volume /data/media:/data/media \
         --detach \
-        --restart always \ 
+        --restart always \
         syphr/logitechmediaserver
 ```
 
@@ -47,7 +46,7 @@ docker run \
         --volume /data/lms:/var/lib/squeezeboxserver:nocopy \
         --volume /data/media:/data/media \
         --detach \
-        --restart always \ 
+        --restart always \
         --entrypoint squeezeboxserver \
         syphr/logitechmediaserver
 ```
