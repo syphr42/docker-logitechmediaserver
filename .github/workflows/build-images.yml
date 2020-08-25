@@ -23,6 +23,7 @@ jobs:
       - name: Build images
         run: |
           docker buildx build \
+            --build-arg LMS_CHANNEL=stable \
             --build-arg LMS_VERSION=7.9.3 \
             --tag syphr/logitechmediaserver:7.9.3 \
             --tag syphr/logitechmediaserver:latest \
@@ -48,6 +49,7 @@ jobs:
         run: |
           for version in "7.9.4" "8.0.0"; do
             docker buildx build \
+              --build-arg LMS_CHANNEL=beta \
               --build-arg LMS_VERSION="${version}" \
               --tag syphr/logitechmediaserver:"${version}-beta" \
               --platform linux/amd64,linux/arm/v7 \

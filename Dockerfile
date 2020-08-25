@@ -33,11 +33,13 @@ RUN apt-get update \
 # copy install script into the container
 COPY ./install-lms.sh .
 
-# set lms version
+# lms version in the format x.y.z
 ARG LMS_VERSION
+# lms channel: stable or beta
+ARG LMS_CHANNEL
 
 # download and install lms package
-RUN ./install-lms.sh "${LMS_VERSION}"
+RUN ./install-lms.sh "${LMS_VERSION}" "${LMS_CHANNEL}"
 
 # set user/group in the environment
 ENV LMS_USER squeezeboxserver
