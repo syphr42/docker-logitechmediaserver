@@ -18,6 +18,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
+        lame \
         libfaad2 \
         libflac-dev \
         libio-socket-ssl-perl \
