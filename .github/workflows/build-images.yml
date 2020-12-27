@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: '0 4 * * *' # everyday at 4am
   push:
-    branches: master
+    branches:
+      - master
 
 jobs:
   build-stable:
@@ -22,14 +23,17 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build images
         run: |
-          docker buildx build \
-            --build-arg LMS_CHANNEL=stable \
-            --build-arg LMS_VERSION=7.9.3 \
-            --tag syphr/logitechmediaserver:7.9.3 \
-            --tag syphr/logitechmediaserver:latest \
-            --platform linux/amd64,linux/arm/v7 \
-            --push \
-            .
+          latest=8.1.0
+          for version in "7.9.3" "8.0.0" "8.1.0"; do
+            docker buildx build \
+              --build-arg LMS_CHANNEL=stable \
+              --build-arg LMS_VERSION="${version}" \
+              --tag syphr/logitechmediaserver:"${version}" \
+              $(if [ "${version}" = "${latest}" ]; then echo "--tag syphr/logitechmediaserver:latest"; fi) \
+              --platform linux/amd64,linux/arm/v7 \
+              --push \
+              .
+          done
       - name: Cleanup
         run: rm -f ${HOME}/.docker/config.json
   build-beta:
@@ -47,7 +51,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build images
         run: |
-          for version in "7.9.4" "8.0.0"; do
+          for version in "8.2.0"; do
             docker buildx build \
               --build-arg LMS_CHANNEL=beta \
               --build-arg LMS_VERSION="${version}" \
