@@ -18,6 +18,8 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
+        faad \
+        flac \
         lame \
         libfaad2 \
         libflac-dev \
@@ -26,8 +28,11 @@ RUN apt-get update \
         libnet-libidn-perl \
         libnet-ssleay-perl \
         libsox-fmt-all \
+        musepack-tools \
         perl \
         perl-openssl-defaults \
+        sox \
+        wavpack \
         wget \
  && rm -r /var/lib/apt/lists/*
 
