@@ -54,3 +54,11 @@ docker run \
         --entrypoint squeezeboxserver \
         syphr/logitechmediaserver
 ```
+
+# Kubernetes
+
+For the easy path to run LMS on Kubernetes, see the [Logitech Media Server Helm Chart](https://github.com/syphr42/helm/tree/main/charts/logitech-media-server). The latest version can be installed with this command:
+
+```
+helm install --repo https://syphr42.github.io/helm lms logitech-media-server
+```
