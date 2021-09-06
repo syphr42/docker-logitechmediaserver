@@ -57,6 +57,7 @@ jobs:
         run: |
           for version in "8.3.0"; do
             docker build \
+              --build-arg BASE_TAG=bullseye-slim \
               --build-arg LMS_CHANNEL=beta \
               --build-arg LMS_VERSION="${version}" \
               --tag syphr/logitechmediaserver:"${version}-beta" \

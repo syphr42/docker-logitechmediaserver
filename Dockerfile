@@ -11,7 +11,9 @@
 #  Discovery: 3483/udp
 
 ARG ARCH=
-FROM ${ARCH}debian:buster-slim
+ARG BASE_IMAGE=debian
+ARG BASE_TAG=buster-slim
+FROM ${ARCH}${BASE_IMAGE}:${BASE_TAG}
 
 # install runtime dependencies
 RUN apt-get update \
