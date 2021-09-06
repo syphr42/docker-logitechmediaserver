@@ -21,6 +21,7 @@ RUN apt-get update \
         faad \
         flac \
         lame \
+        libcrypt-openssl-rsa-perl \
         libfaad2 \
         libflac-dev \
         libio-socket-ssl-perl \
