@@ -32,7 +32,7 @@ jobs:
               --build-arg LMS_VERSION="${version}" \
               --tag syphr/logitechmediaserver:"${version}" \
               $(if [ "${version}" = "${latest}" ]; then echo "--tag syphr/logitechmediaserver:latest"; fi) \
-              --platform linux/amd64,linux/arm/v7 \
+              --platform linux/amd64,linux/arm64,linux/arm/v7 \
               --push \
               .
           done
@@ -61,7 +61,7 @@ jobs:
               --build-arg LMS_CHANNEL=beta \
               --build-arg LMS_VERSION="${version}" \
               --tag syphr/logitechmediaserver:"${version}-beta" \
-              --platform linux/amd64,linux/arm/v7 \
+              --platform linux/amd64,linux/arm64,linux/arm/v7 \
               --push \
               .
           done
