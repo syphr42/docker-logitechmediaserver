@@ -12,7 +12,7 @@
 
 ARG ARCH=
 ARG BASE_IMAGE=debian
-ARG BASE_TAG=buster-slim
+ARG BASE_TAG=bullseye-slim
 FROM ${ARCH}${BASE_IMAGE}:${BASE_TAG}
 
 # install runtime dependencies
