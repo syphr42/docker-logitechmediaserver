@@ -61,7 +61,7 @@ RUN chown -R ${LMS_USER}:${LMS_GROUP} /usr/share/squeezeboxserver/
 WORKDIR /var/lib/squeezeboxserver
 
 # grab gosu for easy step-down from root
-ENV GOSU_VERSION 1.14
+ENV GOSU_VERSION 1.16
 RUN set -eux; \
 # save list of currently installed packages for later so we can clean up
     savedAptMark="$(apt-mark showmanual)"; \
