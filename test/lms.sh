@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-LMS_VERSION=8.2.0
+LMS_VERSION=8.3.0
 
 LMS_CONFIG_DIR=/tmp/lms
 LMS_MUSIC_DIR=/tmp/music
