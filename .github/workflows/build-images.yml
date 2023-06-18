@@ -2,10 +2,10 @@ name: build-images
 
 on:
   schedule:
-    - cron: '0 4 * * *' # everyday at 4am
+    - cron: '10 4 * * 0' # Sundays at 4:10am
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-stable:
